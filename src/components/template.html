@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="initial-scale=0.5,minimum-scale=0.5, maximum-scale=0.5, user-scalable=no, shrink-to-fit=no"/>
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui"/> -->
+
+        <title>components</title>
+    </head>
+    <body ontouchstart style="font-size: 28px;">
+        <div id="root">kanqilaidsadsdsa</div>
+        <div class="box">
+            <span class="redco item">aaa</span><!--
+            --><span class="blueco item">bbb</span><!--
+            --><span class="yellowco item">cccccc</span><!--
+            --><span class="greenco item">ddd</span>
+        </div>
+        <div class="content">
+            <div class="content_span">
+                ①在活动期内，已完成注册的客户邀请好友进行注册（通过注册时填写推荐人手机号完成邀请绑定），邀请好友 达到指定人数，即可获得相应邀请礼奖励，邀请达3人以上还可获得抽奖的机会。
+                ②受邀注册成功的客户，在活动期间内完成下订购车，并最终成功提车，受邀人和邀请人都可享有对应奖品。
+            </div>
+        </div>
+        <script>
+            (function (doc, win) {
+                var dpr = win.devicePixelRatio || 1; // 逻辑像素和物理像素比
+                //   被iframe引用时，禁止缩放
+                dpr = win.top === win.self ? dpr : 1
+                var htmlDom = doc.documentElement //获取html
+                var resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+                var recalc = function () {
+                    var htmlWidth = doc.documentElement.clientWidth || doc.body.clientWidth //获取屏幕宽度
+                    // console.log('htmlWidth', htmlWidth, doc.documentElement.clientWidth, doc.body.clientWidth)
+                    htmlDom.style.fontSize = 100 * (htmlWidth / 640) + 'px'; //设置html字体大小为屏幕的十分之一
+                    htmlDom.setAttribute('data-dpr', dpr);
+                }
+                win.addEventListener(resizeEvt, recalc, false);
+                win.addEventListener('pageshow', recalc, false);
+                doc.addEventListener('DOMContentLoaded', recalc, false);
+
+            })(document, window);
+        </script>
+        <!--
+            设计稿尺寸为640px,如果需要修改，只需要将"htmlDom.style.fontSize = 100 * (htmlWidth / 640) + 'px';"中的640改成所需要的设计稿尺寸即可，对应的0.12rem都直接就是12px设计稿
+            一整行的宽度就是6.4rem
+            需要统一给标签设置max-height:99999px;对于文字过多的标签会rem失效
+        -->
+
+        <script>
+            // ; (function (win, lib) {
+            //         var doc = win.document;
+            //         var docEl = doc.documentElement;
+            //         var metaEl = doc.querySelector('meta[name="viewport"]');
+            //         var dpr = 0;
+            //         var scale = 0;
+            //         var tid;
+
+            //         if (metaEl) {
+            //             var match = metaEl.getAttribute('content').match(/initial\-scale=([\d\.]+)/);
+            //             console.log('metaEl', match, parseFloat(match[1]));
+            //             if (match) {
+            //                 scale = parseFloat(match[1]);
+            //                 dpr = parseInt(1 / scale);
+            //             }
+            //         }
+
+            //         if (!dpr && !scale) {
+            //             // var isAndroid = win.navigator.appVersion.match(/android/gi);
+            //             var isIPhone = win.navigator.appVersion.match(/iphone/gi);
+            //             var devicePixelRatio = win.devicePixelRatio;
+            //             if (isIPhone) {
+            //                 // iOS下，对于2和3的屏，用2倍的方案，其余的用1倍方案
+            //                 if (devicePixelRatio >= 3 && (!dpr || dpr >= 3)) {
+            //                     dpr = 3;
+            //                 } else if (devicePixelRatio >= 2 && (!dpr || dpr >= 2)) {
+            //                     dpr = 2;
+            //                 } else {
+            //                     dpr = 1;
+            //                 }
+            //             } else {
+            //                 dpr = devicePixelRatio
+            //             }
+            //             scale = 1 / dpr;
+            //         }
+
+            //         docEl.setAttribute('data-dpr', dpr);
+            //         if (!metaEl) {
+            //             metaEl = doc.createElement('meta');
+            //             metaEl.setAttribute('name', 'viewport');
+            //             metaEl.setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no , shrink-to-fit=no');
+            //             if (docEl.firstElementChild) {
+            //                 docEl.firstElementChild.appendChild(metaEl);
+            //             } else {
+            //                 var wrap = doc.createElement('div');
+            //                 wrap.appendChild(metaEl);
+            //                 doc.write(wrap.innerHTML);
+            //             }
+            //         }
+
+            //         function refreshRem() {
+            //             var width = docEl.getBoundingClientRect().width;
+            //             if (width / dpr > 540) {
+            //                 width = 540 * dpr;
+            //             }
+            //             // var rem = width / 10;
+            //             var rem = width / 12.42;
+            //             docEl.style.fontSize = rem + 'px';
+            //         }
+
+            //         win.addEventListener('resize', function () {
+            //             clearTimeout(tid);
+            //             tid = setTimeout(refreshRem, 300);
+            //         }, false);
+            //         win.addEventListener('pageshow', function (e) {
+            //             if (e.persisted) {
+            //                 clearTimeout(tid);
+            //                 tid = setTimeout(refreshRem, 300);
+            //             }
+            //         }, false);
+
+            //         if (doc.readyState === 'complete') {
+            //             // doc.body.style.fontSize = (12 * dpr / 100) + 'rem';
+            //             doc.body.style.fontSize = 14 * dpr + 'px';
+            //         } else {
+            //             doc.addEventListener('DOMContentLoaded', function (e) {
+            //                 // doc.body.style.fontSize = (12 * dpr / 100) + 'rem';
+            //                 doc.body.style.fontSize = 14 * dpr + 'px';
+            //             }, false);
+            //         }
+
+            //         refreshRem();
+
+            //     })(window, window['lib'] || (window['lib'] = {}));
+        </script>
+    </body>
+</html>

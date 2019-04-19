@@ -1,0 +1,12 @@
+/*
+* 750适配方案使用的
+*/
+
+/* 字体大小 */
+.f(@size) {
+  font-size: @size / 2;
+}
+
+.r(@name, @px, @baseFontSize: 75px){
+   @{name}: @px / @baseFontSize * 1rem;
+}

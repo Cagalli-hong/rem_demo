@@ -1,0 +1,51 @@
+
+@import "mixins.less";
+body{
+    margin: 0;
+    max-width: none !important;
+    width: 6.4rem;
+}
+* { // 防止部分标签文字过多对于rem失效
+    max-height: 999999px;
+}
+#root{
+    font-size: .32rem;
+    width: 100%;
+    text-align: center;
+}
+.fpage { 
+    display: inline-block;
+    font-size: .28rem; //相当于12px（320宽度下）
+    color: #13ab96;;
+}
+.box{
+    display: inline-block;
+    width: 100%;
+    .item{
+        display: inline-block;
+        width: 1.6rem;
+        font-size: .56rem;
+    }
+    .redco{
+        background: rgb(253, 139, 167);
+    }
+    .blueco{
+        background: rgb(139, 202, 253);
+    }
+    .yellowco{
+        background: rgb(236, 253, 139);
+    }
+    .greenco{
+        background: rgb(139, 253, 158);
+    }
+}
+.content{
+    // line-height: 1.75em;
+    width: 100%;
+}
+.content_span{
+    display: inline-block;
+    width: 6.4rem;
+    font-size: .24rem;
+    line-height: 0.5rem;
+}
